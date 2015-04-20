@@ -67,7 +67,7 @@ public class MainActivity extends Activity {
                     }
                     outgoing.addString(Constants.SPORTS_DATA_KEY, (speed ? "6.28" : "3:00"));
 
-                    PebbleKit.sendDataToPebble(context, Constants.SPORTS_UUID, outgoing);
+                    PebbleKit.sendDataToPebble(getApplicationContext(), Constants.SPORTS_UUID, outgoing);
                     }
 
                 }, 5000L);
