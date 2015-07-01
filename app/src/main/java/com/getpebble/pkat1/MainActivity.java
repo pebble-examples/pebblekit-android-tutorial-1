@@ -2,8 +2,10 @@ package com.getpebble.pkat1;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,6 +16,12 @@ import android.widget.Toast;
 import com.getpebble.android.kit.Constants;
 import com.getpebble.android.kit.PebbleKit;
 import com.getpebble.android.kit.util.PebbleDictionary;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class MainActivity extends Activity {
@@ -105,6 +113,20 @@ public class MainActivity extends Activity {
 
         TextView textView = (TextView)findViewById(R.id.text_view);
         textView.setText(builder.toString());
+
+        // Push a notification
+        final Intent i = new Intent("com.getpebble.action.SEND_NOTIFICATION");
+
+        final Map data = new HashMap();
+        data.put("title", "Test Message");
+        data.put("body", "Whoever said nothing was impossible never tried to slam a revolving door.");
+        final JSONObject jsonData = new JSONObject(data);
+        final String notificationData = new JSONArray().put(jsonData).toString();
+
+        i.putExtra("messageType", "PEBBLE_ALERT");
+        i.putExtra("sender", "PebbleKit Android");
+        i.putExtra("notificationData", notificationData);
+        sendBroadcast(i);
 
         // Get information back from the watchapp
         if(mReceiver == null) {
