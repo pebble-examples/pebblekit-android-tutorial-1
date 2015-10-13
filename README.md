@@ -2,7 +2,8 @@
 
 Example project code for the PebbleKit Android Tutorial (Part 1).
 
-The tutorial content will be released soon.
+The tutorial content itself can be found on the 
+[Pebble developer website](https://developer.getpebble.com/tutorials/android-tutorial).
 
 See [pebble-android-sdk](https://github.com/pebble/pebble-android-sdk) and the
 [mobile app guides](https://developer.getpebble.com/guides/mobile-apps/android) 
